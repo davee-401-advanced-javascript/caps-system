@@ -1,0 +1,24 @@
+{
+  "name": "caps-system",
+  "version": "1.0.0",
+  "description": "",
+  "main": "caps.js",
+  "scripts": {
+    "start": "node caps.js",
+    "test": "jest --verbose --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davee-401-advanced-javascript/caps-system.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/davee-401-advanced-javascript/caps-system/issues"
+  },
+  "homepage": "https://github.com/davee-401-advanced-javascript/caps-system#readme",
+  "dependencies": {
+    "jest": "^26.4.2"
+  }
+}
