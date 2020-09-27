@@ -19,6 +19,9 @@
   },
   "homepage": "https://github.com/davee-401-advanced-javascript/caps-system#readme",
   "dependencies": {
-    "jest": "^26.4.2"
+    "dotenv": "^8.2.0",
+    "faker": "^5.1.0",
+    "jest": "^26.4.2",
+    "uuid": "^8.3.0"
   }
 }
