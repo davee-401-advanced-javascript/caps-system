@@ -14,8 +14,7 @@ function logPickUpMessage(payload) {
 
 function logDelivered(payload) {
   setTimeout( () => {
-    console.log('payload from logDelivered+++++++++++++++++', payload);
-    console.log('DRIVER: delivered ', payload.orderId);
+    console.log(`DRIVER: delivered ${payload.orderId}`);
     events.emit('delivered', payload);
   }, 3000);
 }

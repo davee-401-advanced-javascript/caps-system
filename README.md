@@ -7,7 +7,7 @@
 ### Links and Resources
 
 - [ci/cd](https://github.com/davee-401-advanced-javascript/caps-system/actions) (GitHub Actions)
-- [Lab 16 Pull Request]()
+- [Lab 16 Pull Request](https://github.com/davee-401-advanced-javascript/caps-system/pull/1)
 <!-- - [back-end server url](http://xyz.com) (when applicable)
 - [front-end application](http://xyz.com) (when applicable) -->
 
@@ -15,23 +15,30 @@
 
 #### `.env` requirements (where applicable)
 
-i.e.
+Add the following to an .env file and make up a store name:
 
-- `PORT` - Port Number
-- `MONGODB_URI` - URL to the running mongo instance/db
+```
+MYSTORE= enter a store name here
+```
 
 #### How to initialize/run your application (where applicable)
 
-- e.g. `npm start`
+Enter the following into your terminal:
+
+```
+node caps.js
+```
 
 #### How to use your library (where applicable)
 
 #### Tests
 
-- How do you run tests?
+<!-- - How do you run tests?
 - Any tests of note?
-- Describe any tests that you did not complete, skipped, etc
+- Describe any tests that you did not complete, skipped, etc -->
+
+No test written yet
 
 #### UML
 
-Link to an image of the UML for your application and response to events
+![UML](CAPS-UML.jpg)
