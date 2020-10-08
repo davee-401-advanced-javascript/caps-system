@@ -1,7 +1,7 @@
 'use strict';
 
 const faker = require('faker');
-const uuid = require('uuid').v4;
+// const uuid = require('uuid').v4;
 require('dotenv').config();
 const MYSTORE = process.env.MYSTORE;
 
@@ -16,7 +16,7 @@ function logThankYou (payload) {
 setInterval( () => {
   let payload = {
     storeName: MYSTORE,
-    orderId: uuid(), 
+    orderId: faker.random.uuid(), 
     customerName: faker.name.findName(),
     address: faker.address.streetAddress(),
   };
