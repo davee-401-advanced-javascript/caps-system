@@ -5,6 +5,9 @@
 // events.on('pickup', logPickUpMessage);
 // events.on('pickup', logDelivered);
 
+
+
+
 function logPickUpMessage(payload) {
   setTimeout( () => {
     console.log(`DRIVER: picked up ${payload.orderId}`);

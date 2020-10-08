@@ -9,6 +9,9 @@
 // events.on('in-transit', logInTransitEvent);
 // events.on('delivered', logDeliveredEvent);
 
+
+
+
 function logPickupEvent(payload) {
   let event = {
     event: 'pickup',

@@ -1,13 +1,15 @@
 'use strict';
 
-const faker = require('faker');
 // const uuid = require('uuid').v4;
+const faker = require('faker');
 require('dotenv').config();
 const MYSTORE = process.env.MYSTORE;
 
 // const events = require('../events.js');
-
 // events.on('delivered', logThankYou);
+
+
+
 
 function logThankYou (payload) {
   console.log(`Thank you for delivering ORDER: ${payload.orderId}`);
