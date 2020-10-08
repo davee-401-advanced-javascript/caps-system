@@ -1,9 +1,9 @@
 'use strict';
 
-const events = require('./events.js');
+// const events = require('../events.js');
 
-events.on('pickup', logPickUpMessage);
-events.on('pickup', logDelivered);
+// events.on('pickup', logPickUpMessage);
+// events.on('pickup', logDelivered);
 
 function logPickUpMessage(payload) {
   setTimeout( () => {

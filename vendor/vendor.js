@@ -5,9 +5,9 @@ const uuid = require('uuid').v4;
 require('dotenv').config();
 const MYSTORE = process.env.MYSTORE;
 
-const events = require('./events.js');
+// const events = require('../events.js');
 
-events.on('delivered', logThankYou);
+// events.on('delivered', logThankYou);
 
 function logThankYou (payload) {
   console.log(`Thank you for delivering ORDER: ${payload.orderId}`);
