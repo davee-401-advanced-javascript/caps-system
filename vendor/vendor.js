@@ -6,12 +6,13 @@ const MYSTORE = process.env.MYSTORE;
 
 const io = require('socket.io-client');
 const host = 'http://localhost:3000';
-const capsConnection = io.connect(host);
+
+const mainConnection = io.connect(host);
+const driverToVendor = io.connect(`${host}/delivered`);
 
 
-capsConnection.on('delivered', logThankYou);
-
-
+driverToVendor.on('delivered', logThankYou);
+// create a connection with join and payload of store code
 
 
 function logThankYou (payload) {
@@ -25,7 +26,7 @@ setInterval( () => {
     customerName: faker.name.findName(),
     address: faker.address.streetAddress(),
   };
-  capsConnection.emit('pickup', payload);
+  mainConnection.emit('pickup', payload);
 }, 5000);
 
 

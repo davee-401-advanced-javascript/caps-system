@@ -8,40 +8,34 @@ const io = require('socket.io')(port);
 io.on('connection', (socket) => {
   console.log('CONNECTED', socket.id);
 
-  socket.on('pickup', logPickupEvent);
-  socket.on('in-transit', logInTransitEvent);
-  socket.on('delivered', logDeliveredEvent);
+  socket.on('pickup', (payload) => {
+    loggerMessage('pickup', payload);
+    io.emit('pickup', payload);
+  });
+
+  socket.on('in-transit', (payload) => {
+    loggerMessage('in-transit', payload);
+  });
+  
+});
+
+
+const driverToVendor = io.of('/delivered');
+
+driverToVendor.on('connection', (socket) => {
+  socket.on('delivered', (payload) => {
+    loggerMessage('delivered', payload);
+    driverToVendor.emit('delivered', payload);
+  });
 });
 
 
 
-
-function logPickupEvent(payload) {
-  let event = {
-    event: 'pickup',
+function loggerMessage(event, payload) {
+  console.log({
+    event: event,
     time: Date.now(),
     payload: payload,
-  };
-  console.log(event);
-  io.emit('pickup', payload);
+  });
 }
 
-function logInTransitEvent(payload) {
-  let event = {
-    event: 'in-transit',
-    time: Date.now(),
-    payload: payload,
-  };
-  console.log(event);
-  io.emit('in-transit', payload);
-}
-
-function logDeliveredEvent(payload) {
-  let event = {
-    event: 'delivered',
-    time: Date.now(),
-    payload: payload,
-  };
-  console.log(event);
-  io.emit('delivered', payload);
-}
