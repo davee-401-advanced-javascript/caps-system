@@ -8,15 +8,15 @@ const io = require('socket.io-client');
 const host = 'http://localhost:3000';
 
 const mainConnection = io.connect(host);
-const driverToVendor = io.connect(`${host}/delivered`);
+const caps = io.connect(`${host}/caps`);
 
 
-driverToVendor.on('delivered', logThankYou);
+caps.on('delivered', logThankYou);
 // create a connection with join and payload of store code
 
 
 function logThankYou (payload) {
-  console.log(`Thank you for delivering ORDER: ${payload.orderId}`);
+  console.log(`Thank you for Delivering ORDER: ${payload.orderId}`);
 }
 
 setInterval( () => {

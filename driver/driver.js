@@ -3,7 +3,7 @@
 const io = require('socket.io-client');
 const host = 'http://localhost:3000';
 const mainConnection = io.connect(host);
-const driverToVendor = io.connect(`${host}/delivered`);
+const caps = io.connect(`${host}/caps`);
 
 mainConnection.on('pickup', logPickUpMessage);
 mainConnection.on('pickup', logDelivered);
@@ -14,14 +14,14 @@ mainConnection.on('pickup', logDelivered);
 
 function logPickUpMessage(payload) {
   setTimeout( () => {
-    console.log(`DRIVER: picked up ${payload.orderId}`);
-    mainConnection.emit('in-transit', payload);
+    console.log(`DRIVER: Picked Up ${payload.orderId}`);
+    caps.emit('in-transit', payload);
   }, 1000);
 }
 
 function logDelivered(payload) {
   setTimeout( () => {
-    console.log(`DRIVER: delivered ${payload.orderId}`);
-    driverToVendor.emit('delivered', payload);
+    console.log(`DRIVER: Delivered ${payload.orderId}`);
+    caps.emit('delivered', payload);
   }, 3000);
 }

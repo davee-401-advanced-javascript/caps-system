@@ -9,33 +9,37 @@ io.on('connection', (socket) => {
   console.log('CONNECTED', socket.id);
 
   socket.on('pickup', (payload) => {
-    loggerMessage('pickup', payload);
+    loggerMessage('PICKUP', payload);
     io.emit('pickup', payload);
   });
 
-  socket.on('in-transit', (payload) => {
-    loggerMessage('in-transit', payload);
-  });
-  
 });
 
 
-const driverToVendor = io.of('/delivered');
+const caps = io.of('/caps');
 
-driverToVendor.on('connection', (socket) => {
+caps.on('connection', (socket) => {
+
   socket.on('delivered', (payload) => {
-    loggerMessage('delivered', payload);
-    driverToVendor.emit('delivered', payload);
+    loggerMessage('DELIVERED', payload);
+    caps.emit('delivered', payload);
   });
+
+  socket.on('in-transit', (payload) => {
+    loggerMessage('IN-TRANSIT', payload);
+  });
+
 });
 
 
 
 function loggerMessage(event, payload) {
+  console.log('============================================');
+  console.log('                 ',event);
   console.log({
-    event: event,
     time: Date.now(),
     payload: payload,
   });
+  console.log('============================================');
 }
 
