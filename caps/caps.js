@@ -16,13 +16,21 @@ io.on('connection', (socket) => {
 });
 
 
-const caps = io.of('/caps');
+const capsConnection = io.of('/caps');
 
-caps.on('connection', (socket) => {
+capsConnection.on('connection', (socket) => {
+
+  socket.on('join', (room) => {
+    const valid = ['vendorDavee123'];
+    if(valid.includes(room)) {
+      console.log('A NEW ROOM is CREATED: ', room);
+      socket.join(room);
+    }
+  });
 
   socket.on('delivered', (payload) => {
     loggerMessage('DELIVERED', payload);
-    caps.emit('delivered', payload);
+    capsConnection.to('vendorDavee123').emit('delivered', payload);
   });
 
   socket.on('in-transit', (payload) => {

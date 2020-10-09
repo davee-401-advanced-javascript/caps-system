@@ -8,11 +8,12 @@ const io = require('socket.io-client');
 const host = 'http://localhost:3000';
 
 const mainConnection = io.connect(host);
-const caps = io.connect(`${host}/caps`);
+const capsConnection = io.connect(`${host}/caps`);
 
+let madeUpStoreCode = 'vendorDavee123';
 
-caps.on('delivered', logThankYou);
-// create a connection with join and payload of store code
+capsConnection.on('delivered', logThankYou);
+capsConnection.emit('join', madeUpStoreCode);
 
 
 function logThankYou (payload) {
