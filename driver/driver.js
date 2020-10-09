@@ -1,9 +1,13 @@
 'use strict';
 
-// const events = require('../events.js');
+const io = require('socket.io-client');
+const host = 'http://localhost:3000';
+const capsConnection = io.connect(host);
 
-// events.on('pickup', logPickUpMessage);
-// events.on('pickup', logDelivered);
+
+capsConnection.on('pickup', logPickUpMessage);
+capsConnection.on('pickup', logDelivered);
+
 
 
 
@@ -11,13 +15,13 @@
 function logPickUpMessage(payload) {
   setTimeout( () => {
     console.log(`DRIVER: picked up ${payload.orderId}`);
-    events.emit('in-transit', payload);
+    capsConnection.emit('in-transit', payload);
   }, 1000);
 }
 
 function logDelivered(payload) {
   setTimeout( () => {
     console.log(`DRIVER: delivered ${payload.orderId}`);
-    events.emit('delivered', payload);
+    capsConnection.emit('delivered', payload);
   }, 3000);
 }

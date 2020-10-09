@@ -1,12 +1,15 @@
 'use strict';
 
-// const uuid = require('uuid').v4;
-const faker = require('faker');
 require('dotenv').config();
+const faker = require('faker');
 const MYSTORE = process.env.MYSTORE;
 
-// const events = require('../events.js');
-// events.on('delivered', logThankYou);
+const io = require('socket.io-client');
+const host = 'http://localhost:3000';
+const capsConnection = io.connect(host);
+
+
+capsConnection.on('delivered', logThankYou);
 
 
 
@@ -22,7 +25,7 @@ setInterval( () => {
     customerName: faker.name.findName(),
     address: faker.address.streetAddress(),
   };
-  events.emit('pickup', payload);
+  capsConnection.emit('pickup', payload);
 }, 5000);
 
 

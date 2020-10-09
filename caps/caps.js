@@ -1,13 +1,17 @@
 'use strict';
 
-// const events = require('./events.js');
+require('dotenv').config();
+const port = process.env.PORT || 3000;
+const io = require('socket.io')(port);
 
-// require('./vendor/vendor.js');
-// require('./driver/driver.js');
 
-// events.on('pickup', logPickupEvent);
-// events.on('in-transit', logInTransitEvent);
-// events.on('delivered', logDeliveredEvent);
+io.on('connection', (socket) => {
+  console.log('CONNECTED', socket.id);
+
+  socket.on('pickup', logPickupEvent);
+  socket.on('in-transit', logInTransitEvent);
+  socket.on('delivered', logDeliveredEvent);
+});
 
 
 
@@ -19,6 +23,7 @@ function logPickupEvent(payload) {
     payload: payload,
   };
   console.log(event);
+  io.emit('pickup', payload);
 }
 
 function logInTransitEvent(payload) {
@@ -28,6 +33,7 @@ function logInTransitEvent(payload) {
     payload: payload,
   };
   console.log(event);
+  io.emit('in-transit', payload);
 }
 
 function logDeliveredEvent(payload) {
@@ -37,4 +43,5 @@ function logDeliveredEvent(payload) {
     payload: payload,
   };
   console.log(event);
+  io.emit('delivered', payload);
 }
