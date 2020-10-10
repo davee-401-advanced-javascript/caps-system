@@ -10,10 +10,9 @@ const host = 'http://localhost:3000';
 
 const mainConnection = io.connect(host);
 const capsConnection = io.connect(`${host}/caps`);
-const madeUpStoreCode = 'vendorDavee123';
 
 
-capsConnection.emit('join', madeUpStoreCode);
+capsConnection.emit('join', MYSTORE);
 capsConnection.on('delivered', logThankYou);
 
 
