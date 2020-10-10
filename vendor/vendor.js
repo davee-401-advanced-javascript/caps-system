@@ -5,8 +5,8 @@ const faker = require('faker');
 const MYSTORE = process.env.MYSTORE;
 
 const io = require('socket.io-client');
-// const host = 'http://localhost:3000';
-const host = 'https://caps-lab.herokuapp.com/';
+const host = 'http://localhost:3000';
+// const host = 'https://caps-lab.herokuapp.com/';
 
 const mainConnection = io.connect(host);
 const capsConnection = io.connect(`${host}/caps`);
