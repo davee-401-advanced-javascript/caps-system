@@ -20,8 +20,13 @@ const capsConnection = io.of('/caps');
 
 capsConnection.on('connection', (socket) => {
 
+  // socket.on('pickup', (payload) => {
+  //   loggerMessage('PICKUP', payload);
+  //   socket.broadcast.emit('pickup', payload);
+  // });
+
   socket.on('join', (room) => {
-    const valid = ['vendorDavee123'];
+    const valid = ['davee_store'];
     if(valid.includes(room)) {
       console.log('A NEW ROOM is CREATED: ', room);
       socket.join(room);
@@ -30,7 +35,7 @@ capsConnection.on('connection', (socket) => {
 
   socket.on('delivered', (payload) => {
     loggerMessage('DELIVERED', payload);
-    capsConnection.to('vendorDavee123').emit('delivered', payload);
+    capsConnection.to(payload.storeName).emit('delivered', payload);
   });
 
   socket.on('in-transit', (payload) => {
