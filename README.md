@@ -8,6 +8,7 @@
 
 - [ci/cd](https://github.com/davee-401-advanced-javascript/caps-system/actions) (GitHub Actions)
 - [Lab 16 Pull Request](https://github.com/davee-401-advanced-javascript/caps-system/pull/1)
+- [Lab 18 Pull Request](https://github.com/davee-401-advanced-javascript/caps-system/pull/2)
 <!-- - [back-end server url](http://xyz.com) (when applicable)
 - [front-end application](http://xyz.com) (when applicable) -->
 

@@ -12,8 +12,8 @@ const capsConnection = io.connect(`${host}/caps`);
 
 let madeUpStoreCode = 'vendorDavee123';
 
-capsConnection.on('delivered', logThankYou);
 capsConnection.emit('join', madeUpStoreCode);
+capsConnection.on('delivered', logThankYou);
 
 
 function logThankYou (payload) {

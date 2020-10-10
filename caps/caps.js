@@ -45,7 +45,8 @@ function loggerMessage(event, payload) {
   console.log('============================================');
   console.log('                 ',event);
   console.log({
-    time: Date.now(),
+    // time: Date.now().toString(),
+    time: new Date().toString(),
     payload: payload,
   });
   console.log('============================================');
