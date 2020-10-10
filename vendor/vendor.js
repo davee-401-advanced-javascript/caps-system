@@ -27,7 +27,7 @@ setInterval( () => {
     customerName: faker.name.findName(),
     address: faker.address.streetAddress(),
   };
-  mainConnection.emit('pickup', payload);
+  capsConnection.emit('pickup', payload);
 }, 5000);
 
 

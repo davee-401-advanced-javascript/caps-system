@@ -8,11 +8,6 @@ const io = require('socket.io')(port);
 io.on('connection', (socket) => {
   console.log('CONNECTED', socket.id);
 
-  socket.on('pickup', (payload) => {
-    loggerMessage('PICKUP', payload);
-    io.emit('pickup', payload);
-  });
-
 });
 
 
@@ -20,10 +15,10 @@ const capsConnection = io.of('/caps');
 
 capsConnection.on('connection', (socket) => {
 
-  // socket.on('pickup', (payload) => {
-  //   loggerMessage('PICKUP', payload);
-  //   socket.broadcast.emit('pickup', payload);
-  // });
+  socket.on('pickup', (payload) => {
+    loggerMessage('PICKUP', payload);
+    socket.broadcast.emit('pickup', payload);
+  });
 
   socket.on('join', (room) => {
     const valid = ['davee_store'];
