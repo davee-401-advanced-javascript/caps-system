@@ -5,11 +5,9 @@ const host = 'http://localhost:3000';
 const mainConnection = io.connect(host);
 const capsConnection = io.connect(`${host}/caps`);
 
+
 mainConnection.on('pickup', logPickUpMessage);
 mainConnection.on('pickup', logDelivered);
-
-
-
 
 
 function logPickUpMessage(payload) {
