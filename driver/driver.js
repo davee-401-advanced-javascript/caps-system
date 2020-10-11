@@ -8,8 +8,8 @@ const mainConnection = io.connect(host);
 const capsConnection = io.connect(`${host}/caps`);
 
 
-mainConnection.on('pickup', logPickUpMessage);
-mainConnection.on('pickup', logDelivered);
+capsConnection.on('pickup', logPickUpMessage);
+capsConnection.on('pickup', logDelivered);
 
 
 function logPickUpMessage(payload) {
